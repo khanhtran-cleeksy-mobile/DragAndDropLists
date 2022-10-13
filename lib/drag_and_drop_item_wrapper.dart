@@ -36,11 +36,11 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
                 right: widget.parameters!.itemDragHandle!.onLeft ? null : 0,
                 left: widget.parameters!.itemDragHandle!.onLeft ? 0 : null,
                 top: widget.parameters!.itemDragHandle!.verticalAlignment ==
-                        DragHandleVerticalAlignment.bottom
+                    DragHandleVerticalAlignment.bottom
                     ? null
                     : 0,
                 bottom: widget.parameters!.itemDragHandle!.verticalAlignment ==
-                        DragHandleVerticalAlignment.top
+                    DragHandleVerticalAlignment.top
                     ? null
                     : 0,
                 child: widget.parameters!.itemDragHandle!,
@@ -53,11 +53,11 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
           right: widget.parameters!.itemDragHandle!.onLeft ? null : 0,
           left: widget.parameters!.itemDragHandle!.onLeft ? 0 : null,
           top: widget.parameters!.itemDragHandle!.verticalAlignment ==
-                  DragHandleVerticalAlignment.bottom
+              DragHandleVerticalAlignment.bottom
               ? null
               : 0,
           bottom: widget.parameters!.itemDragHandle!.verticalAlignment ==
-                  DragHandleVerticalAlignment.top
+              DragHandleVerticalAlignment.top
               ? null
               : 0,
           child: MouseRegion(
@@ -65,7 +65,7 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
             child: Draggable<DragAndDropItem>(
               data: widget.child,
               axis: widget.parameters!.axis == Axis.vertical &&
-                      widget.parameters!.constrainDraggingAxis
+                  widget.parameters!.constrainDraggingAxis
                   ? Axis.vertical
                   : null,
               child: MeasureSize(
@@ -117,13 +117,13 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
           child: LongPressDraggable<DragAndDropItem>(
             data: widget.child,
             axis: widget.parameters!.axis == Axis.vertical &&
-                    widget.parameters!.constrainDraggingAxis
+                widget.parameters!.constrainDraggingAxis
                 ? Axis.vertical
                 : null,
             child: widget.child.child,
             feedback: Container(
               width:
-                  widget.parameters!.itemDraggingWidth ?? _containerSize.width,
+              widget.parameters!.itemDraggingWidth ?? _containerSize.width,
               child: Material(
                 child: Container(
                   child: Directionality(
@@ -147,13 +147,13 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
           child: Draggable<DragAndDropItem>(
             data: widget.child,
             axis: widget.parameters!.axis == Axis.vertical &&
-                    widget.parameters!.constrainDraggingAxis
+                widget.parameters!.constrainDraggingAxis
                 ? Axis.vertical
                 : null,
             child: widget.child.child,
             feedback: Container(
               width:
-                  widget.parameters!.itemDraggingWidth ?? _containerSize.width,
+              widget.parameters!.itemDraggingWidth ?? _containerSize.width,
               child: Material(
                 child: Container(
                   child: Directionality(
@@ -174,11 +174,9 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
         );
       }
     } else {
-      draggable = AnimatedSize(
-        duration: Duration(
-            milliseconds: widget.parameters!.itemSizeAnimationDuration),
-        alignment: Alignment.bottomCenter,
-        child: _hoveredDraggable != null ? Container() : widget.child.child,
+      draggable = MeasureSize(
+        onSizeChange: _setContainerSize,
+        child: widget.child.child,
       );
     }
     return Stack(
@@ -193,10 +191,10 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
               alignment: Alignment.topLeft,
               child: _hoveredDraggable != null
                   ? Opacity(
-                      opacity: widget.parameters!.itemGhostOpacity,
-                      child: widget.parameters!.itemGhost ??
-                          _hoveredDraggable!.child,
-                    )
+                opacity: widget.parameters!.itemGhostOpacity,
+                child: widget.parameters!.itemGhost ??
+                    _hoveredDraggable!.child,
+              )
                   : Container(),
             ),
             Listener(
@@ -285,6 +283,6 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
   }
 
   void _onPointerMove(PointerMoveEvent event) {
-    if (_dragging) widget.parameters!.onPointerMove!(event);
+    if (_dragging) widget.parameters!.onPointerMove?.call(event);
   }
 }
