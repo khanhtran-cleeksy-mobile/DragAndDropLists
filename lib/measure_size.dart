@@ -32,13 +32,15 @@ class _MeasureSizeState extends State<MeasureSize> {
   var topLeftPosition = Offset.zero;
 
   void postFrameCallback(_) {
-    var context = widgetKey.currentContext;
-    if (context == null) return;
+    try {
+      var context = widgetKey.currentContext;
+      if (context == null) return;
 
-    var newSize = context.size;
-    if (oldSize != newSize) {
-      widget.onSizeChange(newSize);
-      oldSize = newSize;
-    }
+      var newSize = context.size;
+      if (oldSize != newSize) {
+        widget.onSizeChange(newSize);
+        oldSize = newSize;
+      }
+    } catch (e) {}
   }
 }
