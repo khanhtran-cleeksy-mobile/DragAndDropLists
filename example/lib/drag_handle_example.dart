@@ -84,7 +84,7 @@ class _DragHandleExample extends State<DragHandleExample> {
       appBar: AppBar(
         title: const Text('Drag Handle'),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const CustomNavigationDrawer(),
       body: DragAndDropLists(
         children: _contents,
         onItemReorder: _onItemReorder,

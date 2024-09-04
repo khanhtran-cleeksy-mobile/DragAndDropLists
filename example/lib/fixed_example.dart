@@ -59,7 +59,7 @@ class _FixedExample extends State<FixedExample> {
       appBar: AppBar(
         title: const Text('Fixed Items'),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const CustomNavigationDrawer(),
       body: DragAndDropLists(
         children: _contents,
         onItemReorder: _onItemReorder,

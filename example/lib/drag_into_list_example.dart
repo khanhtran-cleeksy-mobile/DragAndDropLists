@@ -19,7 +19,7 @@ class _DragIntoListExample extends State<DragIntoListExample> {
       appBar: AppBar(
         title: const Text('Drag Into List'),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const CustomNavigationDrawer(),
       body: Column(
         children: <Widget>[
           Flexible(

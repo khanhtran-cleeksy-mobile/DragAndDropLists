@@ -61,7 +61,7 @@ class _SliverExample extends State<SliverExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavigationDrawer(),
+      drawer: const CustomNavigationDrawer(),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: <Widget>[
@@ -73,7 +73,7 @@ class _SliverExample extends State<SliverExample> {
                 alignment: Alignment.bottomCenter,
                 child: Text(
                   'Slivers',
-                  style: Theme.of(context).primaryTextTheme.headline1,
+                  style: Theme.of(context).primaryTextTheme.displayLarge,
                 ),
               ),
             ),

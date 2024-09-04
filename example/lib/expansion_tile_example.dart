@@ -36,7 +36,7 @@ class _ListTileExample extends State<ExpansionTileExample> {
       appBar: AppBar(
         title: const Text('Expansion Tiles'),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const CustomNavigationDrawer(),
       body: DragAndDropLists(
         children: List.generate(_lists.length, (index) => _buildList(index)),
         onItemReorder: _onItemReorder,

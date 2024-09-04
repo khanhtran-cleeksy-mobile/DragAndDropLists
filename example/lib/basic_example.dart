@@ -55,7 +55,7 @@ class _BasicExample extends State<BasicExample> {
       appBar: AppBar(
         title: const Text('Basic'),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const CustomNavigationDrawer(),
       body: DragAndDropLists(
         children: _contents,
         onItemReorder: _onItemReorder,
